@@ -1,18 +1,23 @@
 <div>
   <h5 class="text-primary">Your Information</h5>
+  <hr />
   <div *ngIf="info.token; else loggedOut">
     <p>
       <strong>Username:</strong> {{info.username}}<br />
       <strong>Password:</strong> {{info.password}}<br />
       <strong>Fullname:</strong> {{info.fullname}}<br />
       <strong>Phone:</strong> {{info.phone}}<br />
-      <strong>Roles:</strong> {{info.authorities}}<br />
-      <strong>Token:</strong> {{info.token}}.
+      <!-- <strong>Roles:</strong> {{info.authorities}}<br /> -->
+      <!-- <strong>Token:</strong> {{info.token}}. -->
     </p>
   </div>
-  <button class="btn btn-secondary" (click)="logout()">Logout</button>
+  <div *ngIf="info.token">
+    <button class="btn btn-secondary" (click)="logout()">Logout</button>
+  </div>
 </div>
 
-<ng-template #loggedOut>
-  Please login.
-</ng-template>
+<div>
+  <ng-template #loggedOut>
+    You are logged out. Please login or register
+  </ng-template>
+</div>
